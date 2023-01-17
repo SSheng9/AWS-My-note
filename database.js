@@ -27,7 +27,7 @@ function getNotes(searchTerm) {
     // WHERE title LIKE %?%
     // `
 }
-exports.getNotes = getNotes
+// exports.getNotes = getNotes
 
 // function getNote(id) {
 //     return notes.find(note => note.id === id);
