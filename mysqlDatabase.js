@@ -26,9 +26,9 @@ async function getNotes(searchTerm) {
 
   let query = `
   SELECT * FROM notes
-  WHERE title LIKE %searchTerm%
+  WHERE title LIKE CONCAT('%',?,'%')
   `
-  const [rows] = await pool.query(query)
+  const [rows] = await pool.query(query, [searchTerm])
 
   return rows
 
