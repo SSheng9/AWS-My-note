@@ -6,6 +6,7 @@ const mysqlDatabase = require('./mysqlDatabase')
 
 
 app.set("view engine", "ejs")
+app.use(express.static("public"))
 app.use(express.urlencoded({extended: true}))
 
 app.get('/', (req, res) => {
@@ -58,7 +59,6 @@ app.post("/notes/:id/delete", async(req, res)=>{
 })
 
 
-app.use(express.static("public"))
 
 const port = process.env.PORT || 8080
 app.listen(port, () => {
