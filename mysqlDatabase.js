@@ -12,15 +12,30 @@ const pool = mysql
   })
   .promise()
 
-async function getNotes() {
+async function getNotes(searchTerm) {
+ 
+  if (!searchTerm){
+
   let query = `
   SELECT * 
   FROM notes
   `
-
   const [rows] = await pool.query(query)
   return rows
 }
+
+  let query = `
+  SELECT * FROM notes
+  WHERE title LIKE "%searchTerm%"
+  `
+  const [rows] = await pool.query(query)
+
+  return rows
+
+}
+
+
+
 exports.getNotes = getNotes
 // const note = await getNote(1)
 // console.log(note)
